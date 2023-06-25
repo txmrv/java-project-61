@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Prime implements Game {
+public final class Prime implements Game {
     private static final String NAME = "Prime";
     private static final String DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
@@ -13,11 +13,11 @@ public class Prime implements Game {
     }
 
     private static boolean isPrime(int n) {
-        if (n < 2 || n % 2 == 0) {
+        if (n < 2) {
             return false;
         }
 
-        for (int i = 3; i < n / 2; i += 2) {
+        for (int i = 2; i <= Math.sqrt(n); i += 1) {
             if (n % i == 0) {
                 return false;
             }
@@ -26,8 +26,10 @@ public class Prime implements Game {
         return true;
     }
 
+    private static final int MAX_NUMBER = 100;
+
     public String[] getChallenge() {
-        var randomInt = (int) (Math.random() * 100);
+        var randomInt = (int) (Math.random() * MAX_NUMBER);
         var question = String.valueOf(randomInt);
         var answer = isPrime(randomInt) ? "yes" : "no";
 

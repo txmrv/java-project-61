@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Even implements Game {
+public final class Even implements Game {
     private static final String NAME = "Even";
     private static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
@@ -12,8 +12,10 @@ public class Even implements Game {
         return NAME;
     }
 
+    private static final int MAX_NUMBER = 100;
+
     public String[] getChallenge() {
-        var randomInt = (int) (Math.random() * 100);
+        var randomInt = (int) (Math.random() * MAX_NUMBER);
         var question = String.valueOf(randomInt);
         var answer = randomInt % 2 == 0 ? "yes" : "no";
 

@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Gcd implements Game {
+public final class Gcd implements Game {
     private static final String NAME = "GCD";
     private static final String DESCRIPTION = "Find the greatest common divisor of given numbers.";
 
@@ -24,9 +24,11 @@ public class Gcd implements Game {
         return n2;
     }
 
+    private static final int MAX_NUMBER = 100;
+
     public String[] getChallenge() {
-        var randomInt1 = (int) (Math.random() * 100);
-        var randomInt2 = (int) (Math.random() * 100);
+        var randomInt1 = (int) (Math.random() * MAX_NUMBER);
+        var randomInt2 = (int) (Math.random() * MAX_NUMBER);
         var gcd = getGcd(randomInt1, randomInt2);
 
         var question = randomInt1 + " " + randomInt2;

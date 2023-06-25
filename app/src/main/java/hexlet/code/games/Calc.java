@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Calc implements Game {
+public final class Calc implements Game {
     private static final String NAME = "Calc";
     private static final String DESCRIPTION = "What is the result of the expression?";
 
@@ -12,6 +12,7 @@ public class Calc implements Game {
         return NAME;
     }
 
+    private static final int MAX_NUMBER = 100;
     private static final String[] OPERATIONS = {"+", "-", "*"};
 
     private static int getAnswerBySign(String operationSign, int operand1, int operand2) {
@@ -26,11 +27,11 @@ public class Calc implements Game {
     }
 
     public String[] getChallenge() {
-        var operationIdx = (int) (Math.random() * 100) % OPERATIONS.length;
+        var operationIdx = (int) (Math.random() * MAX_NUMBER) % OPERATIONS.length;
         var operationSign = OPERATIONS[operationIdx];
 
-        var operand1 = (int) (Math.random() * 100);
-        var operand2 = (int) (Math.random() * 100);
+        var operand1 = (int) (Math.random() * MAX_NUMBER);
+        var operand2 = (int) (Math.random() * MAX_NUMBER);
 
         var question = operand1 + " " + operationSign + " " + operand2;
         var answer = getAnswerBySign(operationSign, operand1, operand2);
